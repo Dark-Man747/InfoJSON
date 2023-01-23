@@ -1,9 +1,11 @@
-from flask import Flask
-server = Flask(__name__)
+from flask import Flask, jsonify
 
-@server.route("/")
-def hello():
-    return "Hello World!"
+app = Flask(__name__)
 
-if __name__ == "__main__":
-   server.run(host='0.0.0.0', port=1337)
+@app.route('/')
+def index():
+    data = {'name': 'John', 'age': 30}
+    return jsonify(data)
+
+if __name__ == '__main__':
+       app.run(debug=True,host='0.0.0.0', port=1337)
